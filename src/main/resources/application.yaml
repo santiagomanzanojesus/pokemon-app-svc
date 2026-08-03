@@ -1,3 +1,35 @@
 spring:
   application:
     name: pokemon-app-svc
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pokecenter
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create # validate | update | create | create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        show_sql: true
+    show-sql: true
+
+  sql:
+    init:
+      mode: always # for initial data population
+
+server:
+  port: 8080
+
+
+pokeapi:
+  base-url: https://pokeapi.co/api/v2
+  timeout: 10000
+  max-retries: 5
+
+logging:
+  level:
+    com.pokemon.app: INFO
